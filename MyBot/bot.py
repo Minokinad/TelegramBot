@@ -29,7 +29,8 @@ async def inline_caps(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.answer_inline_query(update.inline_query.id, results)
 
 if __name__ == '__main__':
-    BOT_TOKEN = open("bot_token", mode='r').read()
+    with open("bot_token", mode='r') as file:
+        BOT_TOKEN = file.read()
     application = ApplicationBuilder().token(BOT_TOKEN).build()
 
     start_handler = CommandHandler('start', start)
